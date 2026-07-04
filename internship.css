@@ -1,0 +1,307 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:url("img.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    min-height:100vh;
+
+}
+
+.overlay{
+
+    width:100%;
+    min-height:100vh;
+
+    background:rgba(0,0,0,.75);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px 20px;
+
+}
+
+.card{
+
+    width:950px;
+    max-width:95%;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:20px;
+
+    padding:40px;
+
+    color:white;
+
+}
+
+h1{
+
+    text-align:center;
+    font-size:42px;
+
+    margin-bottom:8px;
+
+}
+
+h3{
+
+    text-align:center;
+
+    color:#00c3ff;
+
+    font-weight:normal;
+
+    margin-bottom:40px;
+
+}
+
+/* STATUS */
+
+.status{
+
+    display:flex;
+
+    gap:25px;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.08);
+
+    border-left:5px solid #00c3ff;
+
+    border-radius:15px;
+
+    padding:25px;
+
+}
+
+.status-icon{
+
+    font-size:55px;
+
+}
+
+.status h2{
+
+    margin-bottom:12px;
+
+    color:#00c3ff;
+
+}
+
+.status p{
+
+    line-height:1.8;
+
+    color:#ddd;
+
+}
+
+.section-title{
+
+    margin-top:45px;
+    margin-bottom:20px;
+
+}
+
+.section-title h2{
+
+    color:#00c3ff;
+
+}
+
+/* GRID */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.box{
+
+    background:rgba(255,255,255,.08);
+
+    padding:20px;
+
+    text-align:center;
+
+    border-radius:12px;
+
+    border-top:4px solid #00c3ff;
+
+    transition:.3s;
+
+}
+
+.box:hover{
+
+    transform:translateY(-6px);
+
+    background:rgba(255,255,255,.15);
+
+}
+
+/* SKILLS */
+
+.skills{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.skill{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    background:rgba(255,255,255,.08);
+
+    border-left:5px solid #00c3ff;
+
+    padding:18px;
+
+    border-radius:12px;
+
+}
+
+.skill span{
+
+    color:#00c3ff;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+/* GOAL */
+
+.goal{
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:15px;
+
+    border-left:5px solid #00c3ff;
+
+    padding:25px;
+
+}
+
+.goal p{
+
+    line-height:1.9;
+
+    color:#ddd;
+
+}
+
+/* BUTTONS */
+
+.contact{
+
+    margin-top:45px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.contact a{
+
+    text-decoration:none;
+
+    color:white;
+
+    border:2px solid #00c3ff;
+
+    padding:14px 30px;
+
+    border-radius:10px;
+
+    transition:.3s;
+
+}
+
+.contact a:hover{
+
+    background:#00c3ff;
+
+    color:#000;
+
+    transform:translateY(-5px);
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+.status{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.skills{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.card{
+
+    padding:25px;
+
+}
+
+h1{
+
+    font-size:34px;
+
+}
+
+}

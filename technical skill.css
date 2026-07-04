@@ -1,0 +1,186 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:url("img.jpg");
+    background-size:cover;
+    background-position:center;
+    min-height:100vh;
+}
+
+.overlay{
+    width:100%;
+    min-height:100vh;
+    background:rgba(0,0,0,.75);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px 20px;
+}
+
+.card{
+    width:1000px;
+    max-width:95%;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:20px;
+
+    padding:40px;
+    color:white;
+}
+
+h1{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:8px;
+}
+
+h3{
+    text-align:center;
+    color:#00c3ff;
+    font-weight:normal;
+    margin-bottom:40px;
+}
+
+.skills-container{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.skill-box{
+
+    background:rgba(255,255,255,.08);
+
+    border-left:5px solid #00c3ff;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    transition:.3s;
+
+}
+
+.skill-box:hover{
+
+    transform:translateY(-8px);
+
+    background:rgba(255,255,255,.15);
+
+}
+
+.skill-box h2{
+
+    color:#00c3ff;
+
+    margin-bottom:20px;
+
+    font-size:22px;
+
+}
+
+.tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.tags span{
+
+    background:#00c3ff;
+
+    color:#000;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+    font-size:15px;
+
+}
+
+.highlight{
+
+    margin-top:50px;
+
+}
+
+.highlight h2{
+
+    color:#00c3ff;
+
+    margin-bottom:20px;
+
+}
+
+.highlight-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+.highlight-grid div{
+
+    background:rgba(255,255,255,.08);
+
+    border-top:4px solid #00c3ff;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.highlight-grid div:hover{
+
+    transform:translateY(-6px);
+
+    background:rgba(255,255,255,.15);
+
+}
+
+@media(max-width:850px){
+
+.skills-container{
+
+    grid-template-columns:1fr;
+
+}
+
+.highlight-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+h1{
+
+    font-size:34px;
+
+}
+
+}
