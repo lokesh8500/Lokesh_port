@@ -1,92 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio</title>
+
+    <link rel="stylesheet" href="index.css">
 </head>
-<script>
-const letters = document.querySelectorAll(".letter");
 
-function handleOrientation(event) {
+<body>
 
-    let gamma = event.gamma || 0;
-    let beta = event.beta || 0;
+    <div class="bg"></div>
 
-    // Limit phone movement
-    gamma = Math.max(-25, Math.min(25, gamma));
-    beta = Math.max(-25, Math.min(25, beta));
+    <main class="container">
 
-    letters.forEach((letter, index) => {
+        <div class="letters">
+            <div class="letter">L</div>
+            <div class="letter">O</div>
+            <div class="letter">K</div>
+            <div class="letter">E</div>
+            <div class="letter">S</div>
+            <div class="letter">H</div>
+            <div class="letter">P</div>
+            <div class="letter">A</div>
+            <div class="letter">T</div>
+            <div class="letter">I</div>
+            <div class="letter">L</div>
+        </div>
 
-        // Slight difference between letters
-        const offset = (index - 5) * 0.5;
+        <h5>"Turning Code into Creativity"</h5>
 
-        const rotateY = -(gamma + offset) * 1.2;
-        const rotateX = beta * 0.5;
+        <nav class="con1">
+            <a href="personalinfo.html">Personal Information</a>
+            <a href="education info.html">Educational Details</a>
+            <a href="technical skill.html">Technical Skills</a>
+            <a href="Project.html">Projects</a>
+            <a href="Internship.html">Internship</a>
+            <a href="extra.html">Extra-Curricular</a>
+            <a href="resume.html">Resume</a>
+            <a href="contact.html">Contact</a>
+        </nav>
 
-        letter.style.transform = `
-            perspective(600px)
-            rotateX(${rotateX}deg)
-            rotateY(${rotateY}deg)
-        `;
-    });
-}
+        <!-- Motion permission button -->
+        <button id="motionBtn">Enable 3D Effect</button>
 
-function startOrientation() {
+    </main>
 
-    if (
-        typeof DeviceOrientationEvent !== "undefined" &&
-        typeof DeviceOrientationEvent.requestPermission === "function"
-    ) {
 
-        DeviceOrientationEvent.requestPermission()
-            .then(permission => {
+    <script>
 
-                if (permission === "granted") {
+        const letters = document.querySelectorAll(".letter");
+        const motionBtn = document.getElementById("motionBtn");
+
+
+        function handleOrientation(event) {
+
+            let gamma = event.gamma || 0;
+            let beta = event.beta || 0;
+
+
+            // Limit movement
+            gamma = Math.max(-30, Math.min(30, gamma));
+            beta = Math.max(-30, Math.min(30, beta));
+
+
+            letters.forEach((letter, index) => {
+
+                // Small difference between letters
+                const difference = (index - 5) * 0.3;
+
+
+                // Phone left/right tilt
+                const rotateY = -(gamma + difference) * 1.2;
+
+
+                // Phone front/back tilt
+                const rotateX = beta * 0.35;
+
+
+                letter.style.transform = `
+                    perspective(600px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                `;
+
+            });
+        }
+
+
+        async function enableMotion() {
+
+            try {
+
+                /*
+                 * iPhone / iPad
+                 * requires permission from user interaction
+                 */
+
+                if (
+                    typeof DeviceOrientationEvent !== "undefined" &&
+                    typeof DeviceOrientationEvent.requestPermission === "function"
+                ) {
+
+                    const permission =
+                        await DeviceOrientationEvent.requestPermission();
+
+
+                    if (permission === "granted") {
+
+                        window.addEventListener(
+                            "deviceorientation",
+                            handleOrientation
+                        );
+
+                        motionBtn.style.display = "none";
+
+                    } else {
+
+                        alert("Motion permission was denied.");
+
+                    }
+
+                }
+
+                /*
+                 * Android and other browsers
+                 */
+
+                else if (
+                    typeof DeviceOrientationEvent !== "undefined"
+                ) {
+
                     window.addEventListener(
                         "deviceorientation",
                         handleOrientation
                     );
+
+                    motionBtn.style.display = "none";
+
                 }
 
-            })
-            .catch(console.error);
+                else {
 
-    } else {
+                    alert(
+                        "Your browser does not support device orientation."
+                    );
 
-        window.addEventListener(
-            "deviceorientation",
-            handleOrientation
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Unable to access the phone motion sensor."
+                );
+
+            }
+
+        }
+
+
+        motionBtn.addEventListener(
+            "click",
+            enableMotion
         );
-    }
-}
 
-startOrientation();
-</script>
-<body>
-  <div class="bg"></div>
+    </script>
 
-  <main class="container">
-    <div class="letters">
-      <div class="letter">L</div><div class="letter">O</div><div class="letter">K</div>
-      <div class="letter">E</div><div class="letter">S</div><div class="letter">H</div>
-      <div class="letter">P</div><div class="letter">A</div><div class="letter">T</div>
-      <div class="letter">I</div><div class="letter">L</div>
-    </div>
-
-    <h5>"Turning Code into Creativity"</h5>
-
-    <nav class="con1">
-      <a href="personalinfo.html">Personal Information</a>
-      <a href="education info.html">Educational Details</a>
-      <a href="technical skill.html">Technical Skills</a>
-      <a href="Project.html">Projects</a>
-      <a href="Internship.html">Internship</a>
-      <a href="extra.html">Extra-Curricular</a>
-      <a href="resume.html">Resume</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </main>
 </body>
+</html>
